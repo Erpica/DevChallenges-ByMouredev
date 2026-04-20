@@ -88,7 +88,7 @@ def my_agenda():
                 name = input("Introduce el nombre del contacto a buscar: ")
                 if name in agenda:
                     print(
-                        f"El nÃºmero de teléfono de {name} es {agenda[name]}.")
+                        f"El número de teléfono de {name} es {agenda[name]}.")
                 else:
                     print(f"El contacto {name} no existe.")
             case "2":
