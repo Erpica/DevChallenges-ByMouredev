@@ -124,7 +124,7 @@ def my_agenda_Brais():
                 print("Opción no válida. Elige una opción del 1 al 5.")
 
 
-#my_agenda()
+#my_agenda_Brais()
 
 
 """  * DIFICULTAD EXTRA (opcional):
@@ -137,65 +137,85 @@ def my_agenda_Brais():
  *   (o el número de dígitos que quieras)
  * - También se debe proponer una operación de finalización del programa. """
 
-def my_agenda_Pic():
-    my_agenda: dict = {}
-
-    print('''
-
-                ##########################
-                #    Agenda de ErPica    #
-                #  --------------------  #
-                # 1. Buscar contacto     #
-                # 2. Insertar contacto   #
-                # 3. Actualizar contacto #
-                # 4. Eliminar contacto   #
-                # 5. Salir               #
-                ##########################
-        
-    ''')
-
-    option = input("\nIntroduce una opción: ")
-    def search_contact():
-        contact = input("Introduce el nombre del conacto a buscar: ")
-        for one_conctact in my_agenda.values:
-            if one_conctact == contact:
-                print (f"El contacto {contact} sí está en la agenda")
-                break
-            print (f"El contacto {contact} no está en la agenda")
+def phone_book():
+    my_phone_book: dict = {}
+    # my_phone_book = {} # Mejor
 
     def insert_contact():
-        contact = input("Introduce el nombre del conacto a añadir")
-        for one_conctact in my_agenda["name"]:
-            if one_conctact == contact:
-                print (f"El contacto {contact} ya está en la agenda")
+        name = input("\n - Introduce el nombre del conacto a añadir: ")
+        if name in my_phone_book:
+            print(f"El contacto {name} esta en la agenda y su teléfono es {my_phone_book[name]}")
+        else:
+            telephone = input(f" - Introduce el teléfono de {name}: ")
+            # * - El programa no puede dejar introducir números de teléfono no numéricos y con más de 11 dígitos.
+            if (telephone.isdigit and telephone.len > 11):
+                my_phone_book[name] = telephone
+                print ("\nContacto añadido correctamente")
+            else:
+                print("\nEl teléfono es erróneo, debe ser numérico y de 11 dígitos")
+
+    while True:
+        print('''
+                    ##########################
+                    #    Agenda de ErPica    #
+                    #  --------------------  #
+                    # 1. Buscar contacto     #
+                    # 2. Insertar contacto   #
+                    # 3. Actualizar contacto #
+                    # 4. Eliminar contacto   #
+                    # 5. Mostrar contactos   #
+                    # 6. Salir               #
+                    ########################## 
+        ''')
+
+        option = input("\nIntroduce una opción: ")
+
+        match option:
+            case "1":
+                name = input("\nIntroduce el nombre del contacto a buscar: ")
+                if name in my_phone_book:
+                    print(f"\n\nEl contacto {name} esta en la agenda y su teléfono es {my_phone_book[name]}")
+                else:
+                    print(f"\nEl contacto \"{name}\" no está en la agenda. \nIntroduce la opción 2 si deseas añadirlo.")
+            case "2":
+                insert_contact()
+            case "3": 
+                name = input("\nIntroduce el nombre del contacto a buscar: ")
+                if name in my_phone_book:
+                    my_phone_book[name] = input(f"Introduce el teléfono de {name}: ")
+                else:
+                    print(f"\nEl contacto \"{name}\" no está en la agenda. \nIntroduce la opción 2 si deseas añadirlo.")
+            case "4": 
+                name = input("\nIntroduce el nombre del contacto a buscar: ")
+                if name in my_phone_book:
+                    del(my_phone_book[name])
+                    print(f"\nEl contacto {name} ha sido eliminado correctamente.")
+                else:
+                    print(f"\nEl contacto \"{name}\" no está en la agenda.")
+                
+            case "5": 
+                for name in my_phone_book:
+                    print(f"\n{name}: {my_phone_book[name]}")
+            case "6":
+                print("\nGracias por usar el programa. Nos vemos pronto.\n")
                 break
-        telephone = input("Introduce el teléfono del conacto a añadir")
-        my_agenda["name"] = contact
-        my_agenda["telephone"] = telephone
-
-    def update_contact():
-        pass
-
-    def delete_contact():
-        pass
+            case _:
+                print("Introduce una opción correcta (del 1 al 5).")
 
 
-    match option:
-        case "1":
-            search_contact()
-        case "2":
-            insert_contact()
-        case "3": 
-            update_contact()
-        case "4": 
-            delete_contact()
-        case "5":
-            print("\nGracias por usar el programa. Nos vemos pronto.\n")
-        case _:
-            print("Introduce una opción correcta (del 1 al 5).")
+phone_book()
 
+""" 
+other_phone_book = {
+    "Anto": "999999999",
+    "Pic": "666666666"
+}
+name ="Anto"
+if name in other_phone_book:
+    print(name + ": " + other_phone_book[name])
+else:
+    print("No") """
 
-my_agenda_Pic()
 
 
 
