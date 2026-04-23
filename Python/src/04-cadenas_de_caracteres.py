@@ -98,7 +98,7 @@ print(s1.isnumeric())
  * DIFICULTAD EXTRA (opcional):
  * Crea un programa que analice dos palabras diferentes y realice comprobaciones
  * para descubrir si son:
- * - Palíndromos
+ * - Palíndromos: palabras que se leen igual de izquierda a derecha que de derecha a izquierda
  * - Anagramas: mismas letras, diferente orden
  * - Isogramas: palabra en la que no se repite ninguna letra
  */
@@ -106,21 +106,59 @@ print(s1.isnumeric())
 
 # string1 = input(" - Introduce una palabra: ")
 # string2 = input(" - Introduce otra palabra: ")
-string1 = "amor"
-string2 = "roma"
+string1 = "radar"
+string2 = "pythonpython"
 
-def check_words(string1, string2):
+# Palíndromas
+print(f"La palabra {string1} es palíndroma: ", list(string1.lower())[::-1] == list(string1.lower()))
+print(f"La palabra {string2} es palíndroma: ", list(string2.lower())[::-1] == list(string2.lower()))
+
+##### Así mejor: #####
+# Palíndromas
+#print(f"La palabra {string1} es palíndroma: ", string1 == string1[::-1])
+#print(f"La palabra {string2} es palíndroma: ", string2 == string2[::-1])
+
+# Anagama:
+print(f"La palabra {string1} es anagrama de {string2}: ", sorted(string1) == sorted(string2))
+
+# Isograma
+def is_isogram(my_string):
+    isograma_dict = {}
+    for character in my_string:
+        isograma_dict[character] = isograma_dict.get(character, 0) + 1
+
+    #print (isograma_dict)
+    isisogram = True
+    num_of_characters = isograma_dict[character]
+    for character in isograma_dict:
+        if (isograma_dict[character] != num_of_characters):
+            isisogram = False
+            return
+
+    return isisogram
+
+print(f"La palabra {string1} es isograma: ", is_isogram(string1))
+print(f"La palabra {string1} es isograma: ", is_isogram(string2))
+
+
+
+
+"""
+# LÍO QUE FORMÉ ANTES DEL VÍDEO.
+ def check_words(string1, string2):
     def is_isogram (mystring):
         isograma = True
         for caracter in mystring:
             if (mystring.lower().count(caracter) > 1):
                 isograma = False
         if (isograma == True):
-            print(f"\nLa palabra {mystring} es un isograma")
+            print(f"- La palabra {mystring} es un isograma")
+        else:
+            print(f"- La palabra {mystring} no es un isograma")
     if (string1.lower() == string2.lower()):
         print(" - Las palabras son iguales - ")
     elif (len(string1) == len(string2) and list(string1.lower())[::-1] == list(string2.lower())):
-        print(f"Las parlabras {string1} y {string2} son palíndromas")
+        print(f"\nLas parlabras {string1} y {string2} son palíndromas")
         anagrama = True
         for caracter in string1:
             if (string1.lower().count(caracter) == string2.lower().count(caracter)):
@@ -128,10 +166,13 @@ def check_words(string1, string2):
             else:
                 anagrama = False
         if (anagrama):
-            print(f"\nLas palabras {string1} y {string2} son también anagrama. ")
+            print(f"- Las palabras {string1} y {string2} son también anagrama. ")
         else:
-            print(f"\nLas palabras {string1} y {string2} no son anagrama. ")
+            print(f"- Las palabras {string1} y {string2} no son anagrama. ")
         is_isogram(string1)
         is_isogram(string2)
+    else:
+        print(f"\nLas parlabras {string1} y {string2} no son palíndromas")
+    print("\n")
 
-check_words(string1, string2)
+check_words(string1, string2) """
