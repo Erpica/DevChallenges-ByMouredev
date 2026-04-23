@@ -18,4 +18,4 @@ Vamos a recopilar mi resolución a estos retos que Brais propone.
 | Módulos   |	(Archivos .py)	snake_case y deben ser cortos    | procesar_csv.py, modelos.py       |
 | Paquetes  |	(Carpetas) snake_case (sin "_" mejor)            | analisis, utilidades_red          |
                
-
+### Nota: al declarar una función, ayuda mucho la pista: def sum_ints(a: int, b: int) ###
