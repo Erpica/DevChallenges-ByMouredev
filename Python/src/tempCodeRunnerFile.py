@@ -1,30 +1,35 @@
+""" 
+Modo,   Leer,   Escribir,   ¿Borra el contenido?,   ¿Crea si no existe?
+r        ✅       ❌              No                     ❌ (Error)
+w        ❌       ✅              SÍ                     ✅
+a        ❌       ✅              No                     ✅
+r+       ✅       ✅              No                     ❌ (Error)
+"""
 
-class StrTypeError(Exception):
-    pass
 
-def process_params(parameters: list):
-    if len(parameters) < 3:
-        raise IndexError("Se necesitan al menos 3 parámetros.")
-    elif parameters[1] == 0:
-        raise ZeroDivisionError("El segundo parámetro no puede ser cero.")
-    elif type(parameters[2]) == str:
-        raise StrTypeError("Excepción personalizada: El tercer parámetro no puede ser una cadena de texto.")
+import os
+print(os.getcwd())
 
-    print(parameters[2])
-    print(parameters[0] / parameters[1])
-    print(parameters[2] + 5)
+file_name = "erpica.txt"
+
+
 
 try:
-    process_params([1, 2, "hola", 2])
-except IndexError as e:
-    print(f"Error de índice: {e}")
-except ZeroDivisionError as e:
-    print(f"Error de división por cero: {e}")
-except StrTypeError as e:
-    print(f"Error personalizado: {e}")
+    with open(file_name, "r") as file:
+        print(len(file.readlines()))
+        print(len(file.readlines()))
+        file.seek(0) 
+        print(len(file.readlines()))
 except Exception as e:
-    print(f"Error inesperado: {e}")
-else:
-    print("La función se ejecutó sin errores.")
-finally:
-        print("Ejecución finalizada.")
+    print("El fichero no existe")
+
+
+
+with open(file_name, "w") as file:
+    file.write("Anto\n")
+    file.write("46\n")
+    file.write("Python\n")
+
+with open(file_name, "a") as file:
+    file.seek(0) 
+    file.write("prueba")
