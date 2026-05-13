@@ -102,15 +102,17 @@ def file_content (file: str) -> bool | list:
 
 print ("Bienvenido a CRM-PICA")
 while True:
-    print ("########################")
-    print ("#    CRM - PICA        #")
-    print ("#    ----------        #")
-    print ("#   1. Añadir          #")
-    print ("#   2. Consultar       #")
-    print ("#   3. Actualizar      #")
-    print ("#   4. Eliminar        #")
-    print ("#   5. Salir           #")
-    print ("########################")
+    print ("############################")
+    print ("#    CRM - PICA            #")
+    print ("#    ----------            #")
+    print ("#   1. Añadir              #")
+    print ("#   2. Consultar           #")
+    print ("#   3. Actualizar          #")
+    print ("#   4. Eliminar            #")
+    print ("#   5. Venta por producto  #")
+    print ("#   6. Venta total         #")
+    print ("#   7. Salir               #")
+    print ("############################")
     option = input("Introduce un número del menú: ")
     try:
         real_option = int(option)
@@ -130,14 +132,18 @@ while True:
         
         case 2:
             print (f"Has introducido 2")
-            with open(sales_file, "r") as my_file:
-                my_file.seek(0)
-                the_lines = (my_file.readlines())
-                if not the_lines:print("El archivo está vacío")
-                else:
-                    for line in the_lines:
-                        print(line.strip())
-                        # print(f"Producto: {line[0]}, cantidad: {line[1]} y precio: {line[2]}")
+            try:
+                with open(sales_file, "r") as my_file:
+                    my_file.seek(0)
+                    the_lines = (my_file.readlines())
+                    if not the_lines:print("El archivo está vacío")
+                    else:
+                        for line in the_lines:
+                            a_product = line.split()
+                            #print(line.strip())
+                            print(f"Producto: {a_product[0]}, cantidad: {a_product[1]} y precio: {a_product[2]}")
+            except Exception as e:
+                print("Primero debes crear el archivo")
 
         case 3:
             print (f"Has introducido 3")
@@ -150,8 +156,18 @@ while True:
                     for line in the_lines:
                         print(f"{i}: {line.strip()}")
                         i += 1
-            edit_option = input("Introduce la opción del producto a editar: ")
-            real_edit_option = int(edit_option)
+            while True:
+                edit_option = input("Introduce el número del producto a editar: ")
+                try:
+                    real_edit_option = int(edit_option)
+                    if ((real_edit_option <= 0) or len(file_content(my_file) < real_edit_option)):
+                        print("Introduce una opción correcta")
+                        continue
+                    break
+                except Exception as e:
+                    print("Introduce una opción correcta")
+                
+
             # Pedimos los datos del producto a editar
             product_name = input("Introduce el nombre del producto a editar: ")
             amount_product_solds = input("Introduce la cantidad de productos vendidos: ")
@@ -184,10 +200,52 @@ while True:
             else:
                 print("El producto que intentas borrar no existe")
 
+        case 5: #Suma de un producto
+            sum = 0
+            print (f"Has introducido 5")
+            with open(sales_file, "r") as my_file:
+                my_file.seek(0)
+                the_lines = (my_file.readlines())
+                if not the_lines:print("El archivo está vacío")
+                else:
+                    i = 1
+                    for line in the_lines:
+                        print(f"{i}: {line.strip()}")
+                        i += 1
+            edit_option = 0
+            while True:
+                edit_option = input("Introduce el número del producto a editar: ")
+                try:
+                    real_edit_option = int(edit_option)
+                    if ((real_edit_option <= 0) or (len(the_lines) < real_edit_option)):
+                        print("Introduce una opción correcta")
+                        continue
+                    break
+                except Exception as e:
+                    print("Introduce una opción correcta")
+
+            the_product = the_lines [real_edit_option-1]
+            data = the_product.split()
+            print (f"Total del productu {data[0]} es: {float(data[1]) * float(data[2])}")
+
+        case 6: #Suma de todo
+            sum = 0
+            with open (sales_file, "r") as my_file:
+                for a_line in my_file.readlines():
+                    #print(type(a_line))
+                    the_product = (a_line.split())
+                    #print (the_product)
+                    the_product = int(the_product[1]) * float(the_product [2])
+                    sum += the_product
+            print (f"La suma total asciende a: {sum} €")
+            
 
             
-        case 5:
+        case 7:
+            os.remove(sales_file)
             break
+
+
         case _:
             print(f"Has introducido {option}. Debes introducir un número del 1 al 5\n\n")
             

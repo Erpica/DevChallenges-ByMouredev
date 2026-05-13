@@ -72,8 +72,13 @@ print(s3.lower().count("a"))
 print("Saludo: {}, lenguaje: {}!".format(s1, s2))
 print(f"Saludo: {s1}, lenguaje: {s2}!")
 
-# Transformación en lista de caracteres
+# Transformación en lista de caracteres => cada carácter será un elemento de la lista
 print(list(s3))
+
+# Transformación en lista de caracteres => cada palabra será un elemento de la lista (porque he usado los espacios y una coma)
+my_list = s3.replace(",", "")
+print(my_list)
+print(my_list.split())
 
 # Transformación de lista en cadena
 s5 = [s1, ", ", s2, "!"]

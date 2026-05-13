@@ -1,3 +1,0 @@
-wefer 3 3
-platanos 2 3
-plata 3 2
