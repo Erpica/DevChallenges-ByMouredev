@@ -1,0 +1,2 @@
+manzana, 2, 4
+platano, 4, 2
