@@ -35,20 +35,6 @@ print(root.find("age").text)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 data = {
     "name": "Anto Martín",
     "age": 46,
@@ -87,6 +73,7 @@ with open(xml_file, "r", encoding="utf-8") as xml_data:
 tree = xml.parse(xml_file)
 root = tree.getroot()
 
+print("Lenguajes de programación:")
 languages = root.find("programming_language")
 for lang in languages.findall("item"):
     print(lang.text)
