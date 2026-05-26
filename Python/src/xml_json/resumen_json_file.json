@@ -1,0 +1,26 @@
+{
+    "tienda": "Zona Gamer",
+    "fecha_actualizacion": "2026-05-20",
+    "videojuegos": [
+        {
+            "id": 101,
+            "titulo": "Cyberpunk Adventure",
+            "precio": 75,
+            "generos": [
+                "RPG",
+                "Sci-Fi"
+            ],
+            "disponible": true
+        },
+        {
+            "id": 102,
+            "titulo": "Pixel Dungeon",
+            "precio": 14.5,
+            "generos": [
+                "Roguelike",
+                "Indie"
+            ],
+            "disponible": false
+        }
+    ]
+}

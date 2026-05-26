@@ -118,6 +118,100 @@ lenguaje los datos almacenados en el XML y el JSON.
 Borra los archivos.
 
 '''
+import xml.etree.ElementTree as xml
 
 class Custom:
-    pass
+    
+    def __init__(self, xml_file: str):
+        self.xml_file = xml_file
+
+    def show_xml(self):
+        with open (self.xml_file, "r", encoding="utf-8") as file:
+            tree = xml.parse(file)
+            root = tree.getroot()
+            
+            xml_completo = xml.tostring(root, encoding="utf-8").decode("utf-8")
+            print(xml_completo)
+
+    def update_xml(self):
+        with open (self.xml_file, "r", encoding="utf-8") as file:
+            tree = xml.parse(file)
+            root = tree.getroot()
+            
+            xml_completo = xml.tostring(root, encoding="utf-8").decode("utf-8")
+            print(xml_completo)
+
+            tag_to_update = input("\nIntroduce la etiqueta que vas a actualizar: ")
+
+
+
+
+
+
+
+XML_FILE = "Python/src/xml_json/erpica.xml"
+mycustom = Custom(XML_FILE)
+mycustom.show_xml()
+
+
+
+'''
+        - en una clase: -
+    * para inicializarla recibe el nombre de un archivo
+    * tiene dos funciones (para cada tipo) empezamos por xml
+        - Leer
+            1 abro el archivo en modo lectura y lo muestro
+        - Transformar
+            1 abro el archivo en modo lectura y lo muestro
+            2 pido que item quiere transformar y por cual
+            3 cambio el itel
+            4 lo meto en el archivo de nuevo
+        
+
+
+'''
+
+# POR BRAIS
+
+import xml.etree.ElementTree as xml
+import os
+import json
+
+xml_file = "Python/src/xml_json/erpica.xml"
+class Data:
+    def __init__(self, name, age, birth_date, programming_language) -> None:
+        self.name = name
+        self.age = age
+        self.birth_date = birth_date
+        self.programming_language = programming_language
+        
+with open(xml_file, "r") as xml_data:
+    root = xml.fromstring(xml_data.read())
+    name = root.find("name").text
+    age = root.find("age").text
+    birth_date = root.find("birth_date").text
+    programming_language = []
+    for item in root.find("programming_language"):
+        programming_language.append(item.text)
+
+    xml_class = Data(name, age, birth_date, programming_language)
+    print(xml_class.__dict__)       # Esto es: "Imprímelo en formato diccionario"
+
+json_file = "Python/src/xml_json/erpica.json"
+with open(json_file, "r") as json_data:
+    json_dict = json.load(json_data)
+    """
+    name = json_dict["name"]
+    age = json_dict["age"]
+    birth_date = json_dict["birth_date"] 
+    """
+    # O mejor:
+    json_class = Data (
+        json_dict["name"], 
+        json_dict["age"], 
+        json_dict["birth_date"], 
+        json_dict["programming_language"]
+        )
+    print(json_class.__dict__)
+    
+    

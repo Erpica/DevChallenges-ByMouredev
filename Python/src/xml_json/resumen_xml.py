@@ -59,7 +59,34 @@ tree.write(xml_file, encoding="utf-8", xml_declaration=True)
 
 import xml.etree.ElementTree as xml
 
-file = "resumen_xml_file.xml"
+archivo = "Python/src/xml_json/resumen_xml_file.xml"
 
 root = xml.Element("bbdd")
+
+cita1 = xml.SubElement(root, "cita")
+numerodecita1 = xml.SubElement(cita1, "numerodecita")
+nombre1 = xml.SubElement(cita1, "nombre")
+fecha1 = xml.SubElement(cita1, "fecha")
+numerodecita1.text = "1 de mayo"
+nombre1.text = "Anto"
+fecha1.text = "19/05/2026"
+
+cita2 = xml.SubElement(root, "cita")
+numerodecita2 = xml.SubElement(cita2, "numerodecita")
+nombre2 = xml.SubElement(cita2, "nombre")
+fecha2 = xml.SubElement(cita2, "fecha")
+numerodecita2.text = "2 de mayo"
+nombre2.text = "Pic"
+fecha2.text = "20/05/2026"
+
+print(numerodecita1.text)
+print(nombre1.text)
+print(fecha1.text)
+print(numerodecita2.text)
+print(nombre2.text)
+print(fecha2.text)
+
+arbol = xml.ElementTree(root)
+arbol.write(archivo, encoding="utf-8", xml_declaration=True)
+
 
