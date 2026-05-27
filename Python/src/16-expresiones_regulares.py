@@ -135,6 +135,8 @@ email = "erpica@gmail.com"
 
 def check_email(email: str) -> None:
     regex_check_email = r"^[\w]{6,30}@[\w]+\.\w{2,8}$"
+    # By Brais:
+    # r"[\w.+-]+@[\w]+\.[a-zA-z]+" # permite antes de la @ el . el + y el -
     if re.match (regex_check_email, email):
         print("Email válido")
     else:
@@ -144,7 +146,9 @@ def check_email(email: str) -> None:
 check_email(email)
 
 def validate_telephone_number (telephone_number: str) -> bool:
-    if re.match(r"^\d{9}", telephone_number):
+    if re.match(r"^\d{9}$", telephone_number):
+        # By Brais:
+        # r"^\+?\d\s{3,}$" # {3,} dice mínimo 3 dígitos, por si te llaman de un número super largo. El \s por si lo escribe 901 90 90 90. +? -> el más cero o una vez (es decir, opcional)
         return True
     else:
         return False
@@ -156,6 +160,8 @@ else:
 
 def url_validator (url: str) -> bool:
     if re.match(r"^\w{2,63}\.\w+(\.\w+){0,3}$", url):
+        # By Brais:
+        # r"^http[s]?://(www.)?[\w]+\.[a-zA-Z]+$" -> La s es opcional [s]?
         return True
     else:
         return False
