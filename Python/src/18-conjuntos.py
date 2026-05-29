@@ -64,7 +64,9 @@ print("\nresultado de intersección (ELEMENTOS EN COMÚN):", interseccion)
 # Con método: programacion.diference(diseno) // Con operador: -
 diferencia = programacion.difference(diseno)
 diferencia = programacion - diseno
+diferencia_al_reves = diseno - programacion
 print("\nResultado de la diferencia (ESTÁN EN EL PRIMER CONJUNTO PERO NO EN EL SEGUNDO): ", diferencia)
+print("Resultado de la diferencia (ahora diseño menos programación): ", diferencia_al_reves)
 
 # Diferencia simétrica (^)
 # Es lo opuesto a la intersección. Te devuelve todos los elementos que están EN UN CONJUNTO O EN EL OTRO, pero excluye por completo a los que están en ambos. 
@@ -72,7 +74,7 @@ print("\nResultado de la diferencia (ESTÁN EN EL PRIMER CONJUNTO PERO NO EN EL 
 # Con método: programacion.symmetric_difference(diseno) // Con operador: programacion ^ diseno
 dif_simetrica = programacion.symmetric_difference(diseno)
 dif_simetrica = programacion ^ diseno
-print (f"\nResultado de la diferencia simétrica (EN UN CONJUNTO O EN EL OTRO): ", dif_simetrica)
+print (f"\nResultado de la diferencia simétrica (no tengo en cuenta lo que tienen en común): ", dif_simetrica)
 
 
 
