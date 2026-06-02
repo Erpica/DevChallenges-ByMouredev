@@ -49,6 +49,12 @@ def haw_many(function): # se le llama función externa
 def sum(a, b):
     return a + b
 
+@haw_many
+def example_function_4():
+    pass
+
 print(sum(2, 3))
 print(sum(3, 4))
+print(sum(1, 2))
+example_function_4() # Cada decorador tiene su propio contador
 print(sum(1, 2))
