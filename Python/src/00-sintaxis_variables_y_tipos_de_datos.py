@@ -56,3 +56,11 @@ my_none_type = None # Representa la ausencia de valor
 
 my_lenguaje = "Python"
 print(f"¡Hola, {my_lenguaje}!")
+
+# Print de varias líneas:
+print("""
+      El aire de la calle
+      a mi me huele a fresco,
+      yo me descalzo
+      y piso el verde
+""")
