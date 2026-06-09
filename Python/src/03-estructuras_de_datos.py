@@ -8,6 +8,7 @@ Estructuras
  *
 
 """
+import random
 
 # Listas []
 print("Listas:")
@@ -23,7 +24,14 @@ my_list[1] = "GuidoPython"  # Actualización
 print(my_list)
 my_list.sort()  # Ordenación
 print(my_list)
-print(type(my_list))
+random.shuffle(my_list) # Deordenar random. Desordena la lista original
+unsorted_list = random.sample(my_list, len(my_list)) # Crea una nueva lista desordenando la original. Hay que especificarle el tamaño.
+print(my_list)
+print(type(my_list))    # Enumerar los elementos de una lista:
+
+
+
+
 
 # Tuplas (): Inmutables, cuando la creo ya se lo que va a tener
 print("\nTuplas:")
@@ -62,6 +70,7 @@ print(my_dict)
 print(my_dict["name"])  # Acceso
 my_dict["age"] = "37"  # Actualización
 print(my_dict)
+print("    - items -")
 print(type(my_dict.items()))
 print(my_dict.items())
 my_dict = dict(sorted(my_dict.items()))  # Ordenación
@@ -71,6 +80,11 @@ print(type(my_dict))
 print(my_dict.get("name"))
 print(my_dict.get("names"))
 print(my_dict.get("names", "No está"))
+
+# Creando un diccionario enumerando una lista:
+#print({indice: valor for indice, valor in enumerate(my_list, start=1)})
+diccionario = {indice: valor for indice, valor in enumerate(my_list, start=1)}
+print (diccionario)
 
 """
 Extra
