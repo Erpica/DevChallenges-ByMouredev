@@ -1,7 +1,1 @@
-
-print("""
-      Hola
-      que 
-      tal
-      
-      """)
+labyrinth

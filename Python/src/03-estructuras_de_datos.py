@@ -83,7 +83,8 @@ print(my_dict.get("names", "No está"))
 
 # Creando un diccionario enumerando una lista:
 #print({indice: valor for indice, valor in enumerate(my_list, start=1)})
-diccionario = {indice: valor for indice, valor in enumerate(my_list, start=1)}
+my_list_again: list = ["Anto", "Brais", "Midu", "Trovalds"]
+diccionario = {indice: valor for indice, valor in enumerate(my_list_again, start=1)}
 print (diccionario)
 
 """
