@@ -56,6 +56,16 @@ print(my_set)
 print(type(my_set))
 
 # Diccionario
+#Un diccionario en Python es una estructura de datos que almacena elementos en parejas de clave: valor.
+'''
+📋 Características principales
+- Mutables: Puedes añadir, modificar o eliminar elementos después de crearlo.
+- Claves únicas: No puede haber claves duplicadas (si repites una clave, el último valor machaca al anterior).
+- Indexados por clave: En lugar de usar una posición numérica (como las listas), se accede a los datos a través 
+de su clave.
+- Ordenados: Mantienen el orden de inserción de los elementos.
+- Métodos: keys(), values(), items(), update(), clear()
+'''
 print("\nDiccionario:")
 my_dict: dict = {
     "name": "Anto",
