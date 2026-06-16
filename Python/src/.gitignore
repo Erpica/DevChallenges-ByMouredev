@@ -1,1 +1,13 @@
-Ejercicios_avanzados/.env
+# Variables de entorno
+.env
+**/.env
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Archivos temporales
+tempCodeRunnerFile.py
