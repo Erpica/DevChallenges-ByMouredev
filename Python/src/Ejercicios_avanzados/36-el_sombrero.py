@@ -20,12 +20,6 @@ preguntas, con cuatro posibles respuestas cada una.
 '''
 import random
 
-class start:
-    def __init__(self):
-        name = input("Introduce tu nombre")
-
-
-
 class questions:
     questions_list = [
     {
@@ -118,6 +112,7 @@ class questions:
 class start_playing:
     def __init__(self):
         print("Bienvenido a la escuela de programación.")
+        self.name = input("Introduce tu nombre")
 
     def start_questions(self):
         answers_list = []
@@ -176,6 +171,7 @@ class start_playing:
         winners = [house for house, points in scores.items() if points == max_puntuation]
 
         # 3. Evaluamos el resultado final
+        print(f"{self.name}. Estos son tus resultados: ")
         if len(winners) > 1:
             # Si hay más de un ganador en la lista, es un empate
             # " , ".join(winners) junta los nombres bonitos, por ejemplo: "Front y Back"
