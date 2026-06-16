@@ -1,3 +1,2 @@
-my_list_again: list = ["Anto", "Brais", "Midu", "Trovalds"]
-diccionario = {indice: valor for indice, valor in enumerate(my_list_again, start=1)}
-print (diccionario)
+
+# Al intentar usar requests me aparece el error: "Import "requests" could not be resolved from source"
