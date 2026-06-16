@@ -1,11 +1,17 @@
+import base64
 import requests
 
-url = "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V"
-headers = {
-    "Authorization": "Bearer NgCXRK...MzYjw"
-}
 
-response = requests.get(url, headers=headers)
+'''
+curl -X POST "https://accounts.spotify.com/api/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "grant_type=client_credentials&client_id=your-client-id&client_secret=your-client-secret"
 
-print(response.status_code)
-print(response.json())  # Si la respuesta es JSON
+'''
+
+""" def get_token() -> str:
+    url = "https://accounts.spotify.com/api/token"
+    headers = {
+        "Autorization": "Basic" + base64.b64decode()
+        "Content-Type": "application/x-www-form-urlencoded"
+    } """
