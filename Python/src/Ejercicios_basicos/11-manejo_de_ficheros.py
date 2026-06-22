@@ -8,7 +8,7 @@ r+       ✅       ✅              No                     ❌ (Error)
 
 
 import os
-print(os.getcwd())
+print(f"getcwd(): {os.getcwd()}")
 
 file_name = "erpica.txt"
 
@@ -34,6 +34,7 @@ with open(file_name, "a") as file:
     file.seek(0) # al estar abierto con "a" añade al final independientemente de donde está el puntero
     file.write("prueba")
 
+print("\nReadlines:")
 with open(file_name, "r") as file:
     print(file.readlines())
 
@@ -41,7 +42,7 @@ with open(file_name, "r") as file:
 
 
 if os.path.exists(file_name):
-    print("Sí existe el archivo")
+    print("\nSí existe el archivo")
 
 with open(file_name, "r") as file:
     print(f"type(file.readlines()): {type(file.readlines())}")  # Readlines se usa siempre sin argumentos, devuelve una lista con cada línea del archivo como un elemento de la lista
@@ -72,7 +73,7 @@ with open(file_name, "r") as file:
 print (f"Número de líneas: {total_lines}")
 
 
-print("Ejercicios con Path")
+print("\nEjercicios con Path")
 print(os.path.exists(file_name))
 print(os.path.exists("Python/src/manejo_de_ficheros/prueba.txt"))
 os.remove(file_name)
