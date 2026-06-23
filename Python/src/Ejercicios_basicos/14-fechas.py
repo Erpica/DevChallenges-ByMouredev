@@ -1,8 +1,10 @@
-from datetime import datetime
+from datetime import datetime, date, timedelta # timedelta para sumar y restar
 import locale # por si quiero poner en castellano los días y meses
 
-now = datetime.now()
-birth_date = datetime(1980, 6, 15, 12, 0, 0)
+now = datetime.now() # Mucho más moderna que datetime.today(9 y acepta zonas horarias)
+birth_date = datetime.strptime("15/06/1980", "%d/%m/%Y")
+print(birth_date.strftime("%d/%m/%Y"))
+#birth_date_other_way = datetime(1980, 6, 15, 12, 0, 0)
 
 print(now)
 print(birth_date)
@@ -30,7 +32,7 @@ print(f"Hora, minuto y segundo: {birth_date.strftime("%h:%m:%S")}")
 print(f"Día de año.: {int(birth_date.strftime("%j"))}")
 print(f"Día de la semana: {birth_date.strftime("%A")}")
 print(f"Nombre del mes.: {birth_date.strftime("%B")}")
-print(birth_date.strptime("%d %m %y"))
+print(birth_date.strftime("%d %m %y"))
 
 
 
@@ -58,6 +60,13 @@ print(f"Nombre del mes.: {birth_date.strftime('%B')}")
 
 
 '''
+from datetime import datetime, date, timedelta
+datetime → fecha + hora
+date → solo fecha
+timedelta → diferencias de tiempo (días, horas, etc.) => sumar y restar días
+
+
+
 Directiva       Significado                                                                     Ejemplo                             
 
 %a              Día de la semana como nombre abreviado según la configuración regional.         Sun, Mon, …, Sat (en_US); So, Mo, …, Sa (de_DE)
@@ -92,3 +101,18 @@ Directiva       Significado                                                     
 %x              Representación de fecha apropiada de la configuración regional.                 08/16/88 (None); 08/16/1988 (en_US); 16.08.1988 (de_DE)
 %X              Representación de la hora apropiada de la configuración regional.               21:30:00 (en_US); 21:30:00 (de_DE)
 '''
+
+# ampliando un poco más:
+fecha = datetime(2026, 6, 23, 14, 30)
+fecha_2 = datetime.strptime("2026, 6, 23, 14, 30", "%Y, %m, %d, %H, %M")
+print(type(fecha))
+print(type(fecha_2))
+
+
+# _today = datetime.today() # Más antigüo, se usa mejor .now()
+
+_today = datetime.now()
+_tomorrow = _today + timedelta(days=1)
+_yesterday = _today - timedelta(days=1)
+
+print(f"Ayer: {_yesterday}\nHoy: {_today}\nY mañana: {_tomorrow}")
