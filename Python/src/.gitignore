@@ -11,3 +11,6 @@ __pycache__/
 
 # Archivos temporales
 tempCodeRunnerFile.py
+
+# Credenciales APIs de Google:
+credenciales.json
