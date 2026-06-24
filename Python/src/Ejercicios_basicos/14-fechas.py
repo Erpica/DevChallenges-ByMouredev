@@ -1,10 +1,16 @@
 from datetime import datetime, date, timedelta # timedelta para sumar y restar
 import locale # por si quiero poner en castellano los días y meses
 
-now = datetime.now() # Mucho más moderna que datetime.today(9 y acepta zonas horarias)
+now = datetime.now() # Mucho más moderna que datetime.today (y acepta zonas horarias)
+
+print("\nTipos de datos:")
 birth_date = datetime.strptime("15/06/1980", "%d/%m/%Y")
-print(birth_date.strftime("%d/%m/%Y"))
+print(f"Con strptime lo paso a tipo {type(birth_date)}: {birth_date}")
+other = birth_date.strftime("%d/%m/%Y")
+print(f"Con strftime lo paso a tipo {type(other)}: {other}")
 #birth_date_other_way = datetime(1980, 6, 15, 12, 0, 0)
+
+print("\n")
 
 print(now)
 print(birth_date)
