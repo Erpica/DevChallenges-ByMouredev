@@ -29,7 +29,8 @@ unsorted_list = random.sample(my_list, len(my_list)) # Crea una nueva lista deso
 print(my_list)
 print(type(my_list))    # Enumerar los elementos de una lista:
 
-
+random_number = random.randint(1,5) # Número aleatorio entre 1 y 5 (ambos inclusive)
+print(random_number)
 
 
 

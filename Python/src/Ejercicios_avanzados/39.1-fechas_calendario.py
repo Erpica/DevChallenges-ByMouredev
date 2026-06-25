@@ -49,7 +49,7 @@ primer_dia_semana, total_dias = calendar.monthrange(2026, 9)
 print(primer_dia_semana, total_dias)
 print(calendar.monthrange(2026, 9))
 
-# Calculador de año bisiesto:
+# Comprobar si un año es bisiesto
 print(calendar.isleap(2026))  # Devuelve False
 print(calendar.isleap(2028))  # Devuelve True
 
@@ -64,4 +64,44 @@ semanas = calendar.monthcalendar(2026, 9)
 print(semanas)
 
 for nombre in calendar.day_name:
-    print(nombre)  # Imprime: lunes, martes, miércoles...
+    print(nombre, end=", ")  # Imprime: lunes, martes, miércoles...
+
+# Calenadrio de un mes:
+print(calendar.month(2026, 9))
+
+# print(calendar.calendar(2026)) # -> Imprime el calentario del año.
+
+# print(calendar.weekday(2026, 9, 9)) # -> Imprime el número del día de la semana: Lunes 0, domingo 6
+
+# Nombre de un día concreto
+one_day_name = calendar.weekday(2026, 9, 9)
+print(calendar.day_name[one_day_name])
+# ... y si lo quiero en castellano:
+import locale
+locale.setlocale(locale.LC_TIME, 'spanish') # Para Windows
+# locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')  # Linux/Mac
+one_day_name = calendar.weekday(2026, 9, 9)
+print(calendar.day_name[one_day_name])  # miércoles
+
+
+# Obtener el número de días que tiene un mes:
+days = calendar.monthrange(2026, 2)[1]
+print(f"Febrero tiene {days} días.")
+
+'''
+🧠 Resumen visual
+Función	        ¿Qué hace?
+month()	        Calendario de un mes
+calendar()	    Calendario de un año
+weekday()	    Día de la semana de una fecha
+isleap()	    ¿Año bisiesto?
+leapdays()	    Nº de bisiestos entre años
+monthrange()	Día del primer día y total de días
+TextCalendar()	Calendario personalizado en texto
+HTMLCalendar()	Calendario en HTML
+
+🚫 Lo que NO hace calendar (y que está en otros módulos)
+- No maneja operaciones aritméticas con fechas (eso es para datetime y timedelta).
+- No trabaja con zonas horarias (eso es para pytz o zoneinfo).
+- No convierte strings a fechas (eso es para datetime.strptime).
+'''
