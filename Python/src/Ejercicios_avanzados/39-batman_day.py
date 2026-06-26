@@ -122,47 +122,58 @@ class Matrix:
         print(f"\nTotal: {count} ataques.")
             
     def identify_zone(self):
-        i = 0
-        j = 0
-        count = 0
-        more_danger = 0
-        danger_this_zone = 0
-        security_protocol = {}
-        for x in range(1, 11):
-            for y in range(1, 11):
-                print(f"{self.matrix_dict[(x,y)]}", end=" ")
-                danger_this_zone += self.matrix_dict[(x,y)]
-                count += 1
-            print()
-
-
-
-
-""" 
-                for i in range (-2, 3):
-                    for j in range (-2, 3):
-                        count += self.matrix_dict[(x-i,y-j)]
-                        print(self.matrix_dict[(x-i,y-j)], end="")
-
-                if count > danger_count:
-                    danger_count = count
-                    #security_protocol[(x,y):danger_count]
-        print(security_protocol) """
+        self.max_danger = -1
+        self.zone = None
+        
+        for x in range(2, 20):
+            for y in range(2, 20):
+                # Desempaquetamos lo que nos da check_submatrix
+                coordenadas, total_amenazas = self.check_submatrix(x, y)
                 
+                # Ahora comparamos limpiamente número contra número
+                if total_amenazas > self.max_danger:
+                    self.max_danger = total_amenazas
+                    self.zone = (coordenadas, total_amenazas) # Guarda ((x, y), total)
+                    
+        return self.zone
+        
+
+    def check_submatrix(self, center_x, center_y):
+        total_threat = 0
+        # dx y dy van a ser -1, 0, 1. Se lo sumamos al centro para mirar alrededor.
+        for dx in range(-1, 2):
+            for dy in range(-1, 2):
+                total_threat += self.matrix_dict[center_x + dx, center_y + dy]
+                
+        # Devolvemos la coordenada (en una tupla) junto con el total
+        return (center_x, center_y), total_threat
+        
 
 
-
-
-
-
-
+# 1. Creamos la matriz y metemos 20 amenazas
 bat_matrix = Matrix()
-#print(type(bat_matrix))
-#bat_matrix.show_matrix()
 bat_matrix.fill_theat(20)
 bat_matrix.show_matrix()
-bat_matrix.count_threats()
-bat_matrix.identify_zone()
+bat_matrix.count_threats() 
+
+# 2. Llamamos al método inteligente que busca en todo el mapa
+resultado_critico = bat_matrix.identify_zone()
+
+if resultado_critico:
+    (centro_x, centro_y), suma_amenazas = resultado_critico
+
+    # 3. Cálculos estratégicos para Batman
+    distancia_batcueva = abs(centro_x) + abs(centro_y)
+    protocolo_activo = "SÍ" if suma_amenazas > 20 else "NO"
+
+    # 4. Mostrar el reporte en consola
+    print("\n📡 INFORME DE INTELIGENCIA DE LA BATCUEVA")
+    print("-" * 40)
+    print(f"📍 Centro más amenazado: Coordenada ({centro_x}, {centro_y})")
+    print(f"🔥 Sumatorio de nivel de amenaza: {suma_amenazas}")
+    print(f"🚗 Distancia a la Batcueva (0,0): {distancia_batcueva} bloques")
+    print(f"⚠️ ¿Activar protocolo de seguridad?: {protocolo_activo}")
+    print("-" * 40)
 
         
 """ 
