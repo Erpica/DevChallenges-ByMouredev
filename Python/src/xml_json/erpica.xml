@@ -1,11 +1,1 @@
-<data>
-    <name>Anto Martín</name>
-    <age>46</age>
-    <birth_date>01/01/1980</birth_date>
-    <programming_language>
-        <item>Python</item>
-        <item>Javascript</item>
-        <item>HTML</item>
-        <item>CSS</item>
-    </programming_language>
-</data>
+<data><name>Anto Martín</name><age>46</age><birth_date>01/01/1980</birth_date><programming_language><item>Python</item><item>Javascript</item><item>HTML</item><item>CSS</item></programming_language></data>
