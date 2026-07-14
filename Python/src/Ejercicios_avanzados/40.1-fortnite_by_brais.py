@@ -85,13 +85,11 @@ for user_name in users:
 
 
 
-sort_by_followers = sorted(
-    users_data, key=lambda x:["followers"], reverse=True)
+sort_by_followers = sorted(users_data, key=lambda x:["followers"], reverse=True)
 
 
 
-sort_by_date = sorted(
-    users_data, key=lambda x: x["created_at"], reverse=False)
+sort_by_date = sorted(users_data, key=lambda x: x["created_at"], reverse=False)
 
 
 print("Ranking por número de seguidores:")
