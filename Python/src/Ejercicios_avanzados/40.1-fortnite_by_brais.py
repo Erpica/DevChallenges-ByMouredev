@@ -45,8 +45,12 @@ def get_total_followers(token: str, client_id: str, id: str) ->int:
     response.raise_for_status()
     return response.json().get("total", 0)
 
-
 users = [
+    "ache", "adricontreras4", "agustin51", "alexby11", "ampeterby7", "djmariio", "outconsumer", "elvisayomastercard", "elyas360",
+    "ibai", "crystalmolly", "darioemehache:", "mrkeroro10", "leviathan"
+]
+
+users_all = [
     "littleragergirl", "ache", "adricontreras4", "agustin51", "alexby11", "ampeterby7", "tvander",
     "arigameplays", "arigeli_", "auronplay", "axozer", "beniju03", "bycalitos",
     "byviruzz", "carreraaa", "celopan", "srcheeto", "crystalmolly", "darioemehache",
@@ -89,16 +93,16 @@ sort_by_followers = sorted(users_data, key=lambda x:["followers"], reverse=True)
 
 
 
-sort_by_date = sorted(users_data, key=lambda x: x["created_at"], reverse=False)
+sort_by_date = sorted(users_data, key=lambda x: x["created_at"])
 
 
 print("Ranking por número de seguidores:")
 for id, user, in enumerate(sort_by_followers):
-    print(f"{id+1} - {user['username'] + ':':<20} {user['followers']} seguidores.")     # Para que ocupen todos los nombres 20 caracteres
+    print(f"{id+1:>2} - {user['username'] + ':':<20} {user['followers']} seguidores.")     # Para que ocupen todos los nombres 20 caracteres
 
 print("Ranking por número de seguidores:")
 for id, user, in enumerate(sort_by_date):
-    print (f"{id+1} - {user["username"] + ':':<20} Creado el {user["created_at"]}.")
+    print (f"{id+1:>2} - {user["username"] + ':':<20} Creado el {user["created_at"]}.")
 
 if not_found_users:
     print("Usuarios no encontrados:")
