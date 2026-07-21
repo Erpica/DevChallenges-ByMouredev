@@ -6,6 +6,23 @@ a        ❌       ✅              No                     ✅
 r+       ✅       ✅              No                     ❌ (Error)
 """
 
+'''
+🗝️ Claves para manejar rutas en Python
+Usa la librería pathlib 🛠️: Es el estándar moderno en Python. En lugar de unir textos con barras / o \, usas el operador / entre objetos Path, lo cual funciona en cualquier sistema operativo (Windows, Linux, Mac).
+Basa las rutas en la ubicación del archivo (__file__) 🎯: La variable especial __file__ representa la ubicación de tu script actual. Si usas Path(__file__).parent, Python siempre sabrá dónde está el script, sin importar desde qué carpeta abras la terminal.
+Crea carpetas automáticamente 📂: Con el método .mkdir(parents=True, exist_ok=True), le pides a Python que cree las carpetas intermedias si no existen antes de intentar guardar algo.
+Ejemplo de cómo construir la ruta usando pathlib:
+
+from pathlib import Path
+
+# Obtiene la carpeta donde está este script (.py)
+BASE_DIR = Path(__file__).parent 
+print(f"Directorio Base:\n{BASE_DIR}\n")
+
+# Construye la ruta final sin importar desde dónde ejecutes la terminal
+#my_zip_file = BASE_DIR / "my_file.zip"
+
+'''
 
 import os
 print(f"getcwd(): {os.getcwd()}")
