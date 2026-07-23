@@ -17,7 +17,8 @@ print(my_list)
 my_list.append("Guido")  # Inserción
 my_list.append("Guido")
 print(my_list)
-my_list.remove("Midu")  # Eliminación
+my_list.remove("Midu")  # Eliminación por coincidencia
+my_list.pop(0) # Eliminación por posición
 print(my_list)
 print(my_list[1])  # Acceso
 my_list[1] = "GuidoPython"  # Actualización
