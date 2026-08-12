@@ -98,6 +98,11 @@ Mientras que ElementTree es "el mapa", Element es "el lugar". Cada vez que haces
 
 
 # JSON:
+# IMPORTANTE: Para mostrar el json con indentación-> dumps(data, indent=x). Ejemplo:
+# response = requests.get(url, headers=headers)
+# data = response.json()
+# print(json.dumps(data, indent=4))
+
 # Para ver el árbol: shift + alt + f
 json_file = "Python/src/xml_json/erpica.json"
 with open (json_file, "w", encoding="utf-8") as json_data:
