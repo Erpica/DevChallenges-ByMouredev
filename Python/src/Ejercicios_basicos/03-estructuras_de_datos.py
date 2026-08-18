@@ -99,6 +99,32 @@ my_list_again: list = ["Anto", "Brais", "Midu", "Trovalds"]
 diccionario = {indice: valor for indice, valor in enumerate(my_list_again, start=1)}
 print (diccionario)
 
+'''
+            ⭐ Qué es any() en Python ⭐
+any() es una función built‑in que recibe un iterable (lista, tupla, generador…) y devuelve:
+    True → si al menos un elemento cumple la condición
+    False → si ninguno la cumple
+Es decir:
+any() = ¿existe al menos un elemento que cumpla esto?
+Es la forma más limpia de preguntar si algo está dentro de una colección con una condición.
+any(condición for elemento in iterable)
+Ejemplos:
+1)
+print(any(x > 10 for x in [3, 7, 12])) => True
+2) 
+numeros = [3, 5, -2, 8]
+
+if any(n < 0 for n in numeros):
+    print("Hay negativos")
+else:
+    print("Todo positivo")
+
+
+'''
+
+
+
+
 """
 Extra
 """
